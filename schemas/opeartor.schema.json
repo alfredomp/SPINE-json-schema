@@ -1,0 +1,272 @@
+"operator": {
+"$id": "#operator",
+"decription": "Description of an operators",
+"type": "object",
+"properties":{
+"label": {
+"description": "Label of the operator",
+"type": "string"
+},
+"value": {
+"description": "Value of the operator",
+"type": "string"
+}
+},
+"required": ["label", "value"]
+},
+
+"operatorLessThan": {
+"$id": "#operatorLessThan",
+"properties":{
+"label":{
+"enum": ["<"]
+},
+"value":{
+"enum": ["less than"]
+}
+},
+"required": ["label", "value"]
+},
+
+"operatorLesserEqual": {
+"$id": "#operatorLesserEqual",
+"allOf": [
+{
+"properties":{
+"label":{
+"enum": ["<="]
+},
+"value":{
+"enum": ["less than or equal to"]
+}
+},
+"required": ["label", "value"]
+}
+]
+},
+
+"operatorEqual": {
+"$id": "#operatorEqual",
+"allOf": [
+{
+"properties":{
+"label":{
+"enum": ["="]
+},
+"value":{
+"enum": ["equals"]
+}
+},
+"required": ["label", "value"]
+}
+]
+},
+
+"operatorNotEqual": {
+"$id": "#operatorNotEqual",
+"allOf": [
+{
+"properties":{
+"label":{
+"enum": ["!="]
+},
+"value":{
+"enum": ["not equals"]
+}
+},
+"required": ["label", "value"]
+}
+]
+},
+
+"operatorGreaterEqual": {
+"$id": "#operatorGreaterEqual",
+"allOf": [
+{
+"properties":{
+"label":{
+"enum": [">="]
+},
+"value":{
+"enum": ["greater than or equal to"]
+}
+},
+"required": ["label", "value"]
+}
+]
+},
+
+"operatorGreaterThan": {
+"$id": "#operatorGreaterThan",
+"allOf": [
+{
+"properties":{
+"label":{
+"enum": [">"]
+},
+"value":{
+"enum": ["greater than"]
+}
+},
+"required": ["label", "value"]
+}
+]
+},
+
+"operatorContains": {
+"$id": "#operatorContains",
+"allOf": [
+{
+"properties":{
+"label":{
+"enum": ["contains"]
+},
+"vale":{
+"enum": ["contains"]
+}
+},
+"required": ["label", "value"]
+}
+]
+},
+
+"operatorDoesNotContains": {
+"$id": "#operatorDoesNotContains",
+"allOf": [
+{
+"properties":{
+"label":{
+"enum": ["does not contain"]
+},
+"value":{
+"enum": ["does not contain"]
+}
+},
+"required": ["label", "value"]
+}
+]
+},
+
+"operatorAND": {
+"$id": "#operatorAND",
+"allOf": [
+{
+"properties":{
+"label":{
+"enum": ["AND"]
+},
+"value":{
+"enum": ["AND"]
+}
+},
+"required": ["label", "value"]
+}
+]
+},
+
+"operatorOR": {
+"$id": "#operatorOR",
+"allOf": [
+{
+"properties":{
+"label":{
+"enum": ["OR"]
+},
+"value":{
+"enum": ["OR"]
+}
+},
+"required": ["label", "value"]
+}
+]
+},
+
+"operatorXOR": {
+"$id": "#operatorXOR",
+"allOf": [
+{
+"properties":{
+"label":{
+"enum": ["XOR"]
+},
+"value":{
+"enum": ["XOR"]
+}
+},
+"required": ["label", "value"]
+}
+]
+},
+
+"ordinalOperator": {
+"$id": "#ordinalOperator",
+"description": "Ordinal operator",
+"type": "object",
+"properties":{
+"type":{
+"type": "string",
+"enum": ["ORDINAL_OPERATOR"]
+}
+},
+"required": ["type"],
+"oneOf":[
+{"$ref": "#/definitions/operatorLessThan"},
+{"$ref": "#/definitions/operatorLesserEqual"},
+{"$ref": "#/definitions/operatorEqual"},
+{"$ref": "#/definitions/operatorNotEqual"},
+{"$ref": "#/definitions/operatorGreaterEqual"},
+{"$ref": "#/definitions/operatorGreaterThan"}
+]
+},
+
+"logicalOperator": {
+"$id": "#logicalOperator",
+"description": "Logical operator",
+"type": "object",
+"properties":{
+"type":{
+"type": "string",
+"enum": ["LOGICAL_OPERATOR"]
+}
+},
+"required": ["type"],
+"oneOf":[
+{"$ref": "#/definitions/operatorAND"},
+{"$ref": "#/definitions/operatorOR"},
+{"$ref": "#/definitions/operatorXOR"}
+]
+},
+
+"categoricalOperator": {
+"$id": "#categoricalOperator",
+"description": "Ordinal operator",
+"type": "object",
+"properties":{
+"type":{
+"type": "string",
+"enum": ["CATEGORICAL_OPERATOR"]
+}
+},
+"required": ["type"],
+"oneOf":[
+{"$ref": "#/definitions/operatorEqual"},
+{"$ref": "#/definitions/operatorNotEqual"}
+]
+},
+
+"textualOperator": {
+"$id": "#textualOperator",
+"description": "Textual operator",
+"type": "object",
+"properties":{
+"type":{
+"type": "string",
+"enum": ["TEXTUAL_OPERATOR"]
+}
+},
+"required": ["type"],
+"oneOf":[
+{"$ref": "#/definitions/operatorContains"},
+{"$ref": "#/definitions/operatorDoesNotContains"}
+]
+},

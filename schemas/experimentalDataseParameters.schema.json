@@ -1,0 +1,43 @@
+{
+  "$id":"https://raw.githubusercontent.com/SPINEProject/SPINE-json-schema/master/schemas/experimentalDataseParameters.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Description of the experimental dataset parameters for SPINE.",
+  "type": "object",
+  "TODOS": [ ],
+  "QUESTIONS":[ ],
+  "parameters": {
+    "cohorts": {
+      "description": "List of cohorts",
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "selectionCriteria": {
+      "description": "Criteria for inclusion and exclusion of subjects",
+      "type": "object",
+      "properties":{
+        "inclusion":{
+          "description": "Expression defining the inclusion criteria",
+          "$ref": "#/definitions/expression"
+        },
+        "exclusion":{
+          "description": "Expression defining the exclusion criteria",
+          "$ref": "#/definitions/expression"
+        }
+      },
+      "required": ["inclusion","exclusion"]
+    },
+    "statisticalModel": {
+      "description": "Id of the statistical in the system",
+      "type": "string"
+    },
+    "variablesForStatisticalModel": {
+      "description": "Variables from the system assigned to the variables of the statistical model.",
+      "type":"object"
+    },
+    "timeFrame": {
+      "description": "Time frame description for the variables of the statistical model. Each key correspond to the one of the keys in systemVariablesForStatisticalModel.",
+      "type": "object"
+    }
+  },
+  "required": ["cohorts", "selectionCriteria", "statisticalModel", "variablesForStatisticalModel", "timeFrame"]
+}
